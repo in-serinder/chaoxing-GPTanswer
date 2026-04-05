@@ -76,7 +76,7 @@ const addTestLog = () => {
     const level = levels[Math.floor(Math.random() * levels.length)];
     logs.value.push({
         time: new Date().toLocaleTimeString(),
-        level,
+        level: level as Log['level'],
         message: `测试日志 - ${level}级别`
     });
 };

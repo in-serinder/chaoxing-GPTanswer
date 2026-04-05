@@ -59,11 +59,11 @@ const runSubTask = (taskName: string) => {
     if (isTaskRunning.value) return
 
     currentTask.value = taskName
-    taskStatus.value[taskName] = '进行中'
+    taskStatus.value[taskName as keyof typeof taskStatus.value] = '进行中'
 
     // 模拟子任务执行
     setTimeout(() => {
-        taskStatus.value[taskName] = '已完成'
+        taskStatus.value[taskName as keyof typeof taskStatus.value] = '已完成'
         currentTask.value = ''
     }, 1000)
 }

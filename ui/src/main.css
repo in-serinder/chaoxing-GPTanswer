@@ -118,6 +118,8 @@ body {
     min-height: 0;
     width: calc(100% - 50px);
     height: calc(100% - 50px);
+    /* padding 右侧 影响到滚动条离主内容区域的距离*/
+    padding-right: 20px;
     overflow-y: auto;
 }
 

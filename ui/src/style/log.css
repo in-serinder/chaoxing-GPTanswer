@@ -1,0 +1,203 @@
+.log-container {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    position: relative;
+}
+
+.log-container h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+}
+
+.log-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.log-background img {
+    width: 500px;
+    height: 500px;
+    animation: pulse 4s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+
+    100% {
+        transform: scale(1.1);
+        opacity: 0.2;
+    }
+}
+
+.log-content {
+    height: 350px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.log-list {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    height: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+/* 滚动条样式 */
+.log-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.log-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.log-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.log-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.log-item {
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.log-item.log-info {
+    border-left-color: #64c8ff;
+    background: rgba(100, 200, 255, 0.1);
+}
+
+.log-item.log-success {
+    border-left-color: #64ff96;
+    background: rgba(100, 255, 150, 0.1);
+}
+
+.log-item.log-warning {
+    border-left-color: #ffd93d;
+    background: rgba(255, 217, 61, 0.1);
+}
+
+.log-item.log-error {
+    border-left-color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.log-time {
+    display: inline-block;
+    width: 80px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.log-level {
+    display: inline-block;
+    width: 80px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+
+.log-info .log-level {
+    color: #64c8ff;
+}
+
+.log-success .log-level {
+    color: #64ff96;
+}
+
+.log-warning .log-level {
+    color: #ffd93d;
+}
+
+.log-error .log-level {
+    color: #ff6b6b;
+}
+
+.log-message {
+    display: inline-block;
+    flex-grow: 1;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.log-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.clear-btn,
+.test-btn {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clear-btn {
+    background: rgba(255, 107, 107, 0.3);
+    border-color: rgba(255, 107, 107, 0.5);
+}
+
+.clear-btn:hover {
+    background: rgba(255, 107, 107, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.test-btn {
+    background: rgba(100, 200, 255, 0.3);
+    border-color: rgba(100, 200, 255, 0.5);
+}
+
+.test-btn:hover {
+    background: rgba(100, 200, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(100, 200, 255, 0.3);
+}

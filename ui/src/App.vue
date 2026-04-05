@@ -29,8 +29,7 @@
         </div>
         <!-- 日志 -->
         <div class="tab-pane" id="log-pane">
-          <h3>日志</h3>
-          <p>日志内容将显示在这里</p>
+          <Log />
         </div>
       </div>
     </div>
@@ -44,6 +43,8 @@ import zoom from '@/svg/zoom.svg'
 import Task from '@/components/task.vue'
 import ApiKeyConfig from '@/components/apiKeyConfig.vue'
 import AnswerConfig from '@/components/answerConfig.vue'
+import Log from '@/components/log.vue'
+
 
 const isMinimized = ref(false)
 

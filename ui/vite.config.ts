@@ -21,13 +21,13 @@ export default defineConfig({
       fileName: () => "index.js",
     },
     rollupOptions: {
-      external: ["vue", "pinia", "'vue-demi'"], // 由油猴脚本提供
+      // external: ["vue", "pinia", "'vue-demi'"], // 由油猴脚本提供
       output: {
-        globals: {
-          vue: "Vue",
-          pinia: "Pinia",
-          "vue-demi": "VueDememi",
-        },
+        // globals: {
+        //   vue: "Vue",
+        //   pinia: "Pinia",
+        //   "vue-demi": "VueDememi",
+        // },
       },
     },
   },

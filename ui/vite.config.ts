@@ -17,7 +17,7 @@ export default defineConfig({
     lib: {
       entry: "src/main.ts",
       name: "ChaoxingGPT", // 全局变量名
-      formats: ["umd"], // 或 'iife'
+      formats: ["umd", "iife"], // 或 'iife'
       fileName: () => "index.js",
     },
     rollupOptions: {

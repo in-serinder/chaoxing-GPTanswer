@@ -17,18 +17,22 @@ export default defineConfig({
     lib: {
       entry: "src/main.ts",
       name: "ChaoxingGPT", // 全局变量名
-      formats: ["umd", "iife"], // 或 'iife'
+      formats: ["iife"],
       fileName: () => "index.js",
     },
     rollupOptions: {
-      // external: ["vue", "pinia", "'vue-demi'"], // 由油猴脚本提供
+      external: [],
       output: {
         // globals: {
         //   vue: "Vue",
         //   pinia: "Pinia",
         //   "vue-demi": "VueDememi",
         // },
+        inlineDynamicImports: true,
       },
+    },
+    commonjsOptions: {
+      include: [/node_modules/],
     },
   },
 });

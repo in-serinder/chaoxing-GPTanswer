@@ -35,4 +35,7 @@ export default defineConfig({
       include: [/node_modules/],
     },
   },
+  define: {
+    "process.env.NODE_ENV": JSON.stringify("production"),
+  },
 });

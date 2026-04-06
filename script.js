@@ -2,34 +2,38 @@
 // @name         chaoxing-GPTanswer
 // @namespace    http://tampermonkey.net/
 // @version      2026-04-05
-// @description  学习通GPT答题 解决课程作业或章节题目无法在题库查找的情况 支持deepseek openai以及其他
+// @description  学习通GPT答题
 // @author       Serinder
-// @match        https://i.chaoxing.com/base?t=1775388045655
+// @match        https://mooc1.chaoxing.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=chaoxing.com
-// @require      https://github.com/in-serinder/chaoxing-GPTanswer/raw/refs/heads/main/ui/dist/assets/index-HRZLvoqe.js
-// @require      https://github.com/in-serinder/chaoxing-GPTanswer/raw/refs/heads/main/ui/dist/assets/index-CfsITAHE.css
-// @grant        none
+// @require      https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js
+// @require      https://cdn.jsdelivr.net/npm/vue-demi@0.14.6/lib/index.iife.min.js
+// @require      https://cdn.jsdelivr.net/npm/pinia@2/dist/pinia.iife.prod.js
+// @require      https://cdn.jsdelivr.net/gh/in-serinder/chaoxing-GPTanswer@main/ui/dist/index.js
+// @resource     appCss https://cdn.jsdelivr.net/gh/in-serinder/chaoxing-GPTanswer@main/ui/dist/index.css
+// @grant        GM_addStyle
+// @grant        GM_getResourceText
+// @run-at       document-end
 // ==/UserScript==
 
 (function() {
     'use strict';
+    console.log('Vue:', typeof Vue);
+console.log('VueDemi:', typeof VueDemi);
+console.log('Pinia:', typeof Pinia);
 
-    // 引入样式
-    document.head.appendChild(document.createElement('style')).textContent = `
-        ${require('./index-CfsITAHE.css')}
-    `;
+    const css = GM_getResourceText('appCss');
+    if (css) GM_addStyle(css);
 
-  const div = document.createElement('div');
-    div.id = 'app';
-    document.body.appendChild(div);
+    const mountPoint = document.createElement('div');
+    mountPoint.id = 'chaoxing-gpt-root';
+    document.body.appendChild(mountPoint);
 
-    // if (window.MyApp && typeof window.MyApp.mount === 'function') {
-    //     window.MyApp.mount(mountPoint);
-    // } else if (window.MyApp && typeof window.MyApp.default?.mount === 'function') {
-    //     window.MyApp.default.mount(mountPoint);
-    // } else {
-    //     console.error('Vue 应用未正确导出 mount 函数');
-    // }
-
-    // Your code here...
+    const timer = setInterval(() => {
+        if (window.ChaoxingGPT && typeof window.ChaoxingGPT.mount === 'function') {
+            clearInterval(timer);
+            window.ChaoxingGPT.mount(mountPoint);
+        }
+    }, 100);
+    setTimeout(() => clearInterval(timer), 10000);
 })();

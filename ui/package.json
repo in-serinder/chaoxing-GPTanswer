@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "interactjs": "^1.10.27",
+    "md5": "^2.3.0",
     "pinia": "^3.0.4",
+    "typr": "^0.2.1",
     "vue": "^3.5.31"
   },
   "devDependencies": {

@@ -1,10 +1,10 @@
 <template>
   <!-- 主容器 高度缩放内容 -->
   <div class="container" :class="{ 'minimized': isMinimized }" :style="containerStyle">
-    <div class="title" @click="toggleMinimize" @mousedown="startDrag" @mouseup="stopDrag" @mousemove="onDrag">
+    <div class="title" @mousedown="startDrag" @mouseup="stopDrag" @mousemove="onDrag">
       <!-- <img src="https://pic1.imgdb.cn/item/69d24da0441d16110110747f.png" alt="titleIcon" class="title-icon"> -->
-      <h2>学习通GPT答题</h2>
-      <img :src="zoom" alt="zoom" class="zoom-icon" :class="{ 'rotated': isMinimized }">
+      <h2>学习通GPT答题 ({{ isQuestionPage ? '已处于答题页面' : '请进入任务页面' }})</h2>
+      <img :src="zoom" alt="zoom" class="zoom-icon" :class="{ 'rotated': isMinimized }" @click="toggleMinimize">
     </div>
     <div class="gpt-content" :class="{ 'hidden': isMinimized }">
       <!-- 标签页nav -->
@@ -45,7 +45,7 @@ import ApiKeyConfig from '@/components/apiKeyConfig.vue'
 import AnswerConfig from '@/components/answerConfig.vue'
 import Log from '@/components/log.vue'
 
-
+const isQuestionPage = ref(false)
 const isMinimized = ref(false)
 const isDragging = ref(false)
 const startX = ref(0)

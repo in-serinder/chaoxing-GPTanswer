@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./index.js"></script>
+    <link rel="stylesheet" href="./ui.css">
+    <title>学习通GPT答题</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(96, 67, 239);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #app {
+            width: 100%;
+            max-width: 450px;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+        // 等待DOM加载完成
+        document.addEventListener('DOMContentLoaded', function () {
+            // 尝试初始化ChaoxingGPT应用
+            if (window.ChaoxingGPT) {
+                // 检查ChaoxingGPT的结构
+                console.log('ChaoxingGPT模块已加载:', ChaoxingGPT);
+
+                // 直接使用mount方法挂载
+                if (ChaoxingGPT.mount) {
+                    console.log('使用mount方法挂载');
+                    const app = ChaoxingGPT.mount('#app');
+                    console.log('挂载成功，返回的app实例:', app);
+                } else {
+                    console.error('ChaoxingGPT模块没有mount方法');
+                }
+            } else {
+                console.error('ChaoxingGPT模块未加载');
+            }
+        });
+    </script>
+</body>
+
+</html>

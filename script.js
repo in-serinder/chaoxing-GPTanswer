@@ -16,11 +16,11 @@
 // @run-at       document-end
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
     console.log('Vue:', typeof Vue);
-console.log('VueDemi:', typeof VueDemi);
-console.log('Pinia:', typeof Pinia);
+    console.log('VueDemi:', typeof VueDemi);
+    console.log('Pinia:', typeof Pinia);
 
     const css = GM_getResourceText('appCss');
     if (css) GM_addStyle(css);

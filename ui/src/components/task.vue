@@ -67,8 +67,9 @@ const runSubTask = (taskName: string) => {
     taskStatus.value[taskName as keyof typeof taskStatus.value] = '进行中'
 
     if (taskName === '获取题目列表') {
+        console.info("开始获取题目列表")
         questionsStore.fetchQuestions()
-        console.info(questionsStore.combineQuestions())
+        console.info("题目列表:", questionsStore.combineQuestions())
     }
 
     // 模拟子任务执行

@@ -78,7 +78,7 @@ body {
     transform: rotate(180deg);
 }
 
-.content {
+.container .content {
     flex-grow: 1;
     max-width: 500px;
     min-height: 0;

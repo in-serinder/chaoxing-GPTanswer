@@ -44,6 +44,11 @@ import Task from '@/components/task.vue'
 import ApiKeyConfig from '@/components/apiKeyConfig.vue'
 import AnswerConfig from '@/components/answerConfig.vue'
 import Log from '@/components/log.vue'
+import { useQuestionsStore } from '@/stores/questions'
+import { usePagesStore } from '@/stores/pages'
+
+const questionsStore = useQuestionsStore()
+const pagesStore = usePagesStore()
 
 const isQuestionPage = ref(false)
 const isMinimized = ref(false)
@@ -53,6 +58,7 @@ const startY = ref(0)
 const containerX = ref(100) // 初始位置
 const containerY = ref(100)
 
+const observer = new MutationObserver(pagesStore.checkISQuestionPage)
 
 
 const containerStyle = computed(() => {
@@ -105,18 +111,7 @@ const stopDrag = () => {
   document.removeEventListener('pointercancel', stopDrag)
 }
 
-// 监听全局鼠标释放事件，防止鼠标移出窗口后无法停止拖拽
-onMounted(() => {
-  // document.addEventListener('mouseup', stopDrag)
-  // document.addEventListener('mousemove', onDrag)
-})
 
-onUnmounted(() => {
-  // 确保清理所有事件监听器
-  document.removeEventListener('pointermove', onDrag)
-  document.removeEventListener('pointerup', stopDrag)
-  document.removeEventListener('pointercancel', stopDrag)
-})
 
 const switchTab = (tab: string) => {
 
@@ -140,5 +135,29 @@ const switchTab = (tab: string) => {
   }
 
 }
+
+
+
+onMounted(() => {
+  // document.addEventListener('mouseup', stopDrag)
+  // document.addEventListener('mousemove', onDrag)
+  // 页面监听
+  pagesStore.checkISQuestionPage()
+  // (() => {
+  //   pagesStore.checkISQuestionPage()
+  // })
+
+  observer.observe(document.body, { childList: true })
+
+})
+
+onUnmounted(() => {
+  // 确保清理所有事件监听器
+  document.removeEventListener('pointermove', onDrag)
+  document.removeEventListener('pointerup', stopDrag)
+  document.removeEventListener('pointercancel', stopDrag)
+  // 移除页面监听
+  observer.disconnect()
+})
 
 </script>

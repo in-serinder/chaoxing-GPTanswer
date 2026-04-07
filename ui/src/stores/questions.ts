@@ -4,5 +4,7 @@ export const useQuestionsStore = defineStore("questions", {
   state() {
     return {};
   },
-  actions: {},
+  actions: {
+    /*注册类函数 */
+  },
 });

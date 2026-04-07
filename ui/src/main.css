@@ -35,7 +35,7 @@ body {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    background-color: #107bf5a8;
+    background-color: #383636;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -85,7 +85,7 @@ body {
     padding: 20px;
     transition: all 0.3s ease;
     overflow: hidden;
-    background-color: #107bf5a8;
+    background-color: #383636;
 }
 
 .gpt-content.hidden {

@@ -43,6 +43,9 @@ body {
     cursor: pointer;
     user-select: none;
     position: absolute;
+
+    /* 缩放预设 */
+    transform: scale(0.8);
 }
 
 .container.minimized {

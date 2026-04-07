@@ -80,7 +80,7 @@ body {
 
 .content {
     flex-grow: 1;
-    width: 100%;
+    max-width: 100%;
     min-height: 0;
     padding: 20px;
     transition: all 0.3s ease;

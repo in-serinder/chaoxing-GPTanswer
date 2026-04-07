@@ -1,7 +1,7 @@
 <template>
   <!-- 主容器 高度缩放内容 -->
-  <div class="container" :class="{ 'minimized': isMinimized }">
-    <div class="title" @click="toggleMinimize">
+  <div class="container" :class="{ 'minimized': isMinimized }" :style="containerStyle">
+    <div class="title" @click="toggleMinimize" @mousedown="startDrag" @mouseup="stopDrag" @mousemove="onDrag">
       <!-- <img src="https://pic1.imgdb.cn/item/69d24da0441d16110110747f.png" alt="titleIcon" class="title-icon"> -->
       <h2>学习通GPT答题</h2>
       <img :src="zoom" alt="zoom" class="zoom-icon" :class="{ 'rotated': isMinimized }">
@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import '@/main.css'
-import { ref } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import zoom from '@/svg/zoom.svg'
 import Task from '@/components/task.vue'
 import ApiKeyConfig from '@/components/apiKeyConfig.vue'
@@ -47,10 +47,52 @@ import Log from '@/components/log.vue'
 
 
 const isMinimized = ref(false)
+const isDragging = ref(false)
+const startX = ref(0)
+const startY = ref(0)
+const containerX = ref(0)
+const containerY = ref(0)
+
+const containerStyle = computed(() => {
+  return {
+    left: `${containerX.value}px`,
+    top: `${containerY.value}px`
+  }
+})
 
 const toggleMinimize = () => {
   isMinimized.value = !isMinimized.value
 }
+
+const startDrag = (e: MouseEvent) => {
+  isDragging.value = true
+  startX.value = e.clientX - containerX.value
+  startY.value = e.clientY - containerY.value
+  // 防止点击事件触发
+  e.preventDefault()
+}
+
+const onDrag = (e: MouseEvent) => {
+  if (isDragging.value) {
+    containerX.value = e.clientX - startX.value
+    containerY.value = e.clientY - startY.value
+  }
+}
+
+const stopDrag = () => {
+  isDragging.value = false
+}
+
+// 监听全局鼠标释放事件，防止鼠标移出窗口后无法停止拖拽
+onMounted(() => {
+  document.addEventListener('mouseup', stopDrag)
+  document.addEventListener('mousemove', onDrag)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('mouseup', stopDrag)
+  document.removeEventListener('mousemove', onDrag)
+})
 
 const switchTab = (tab: string) => {
 

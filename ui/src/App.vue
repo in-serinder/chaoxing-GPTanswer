@@ -6,7 +6,7 @@
       <h2>学习通GPT答题</h2>
       <img :src="zoom" alt="zoom" class="zoom-icon" :class="{ 'rotated': isMinimized }">
     </div>
-    <div class="content" :class="{ 'hidden': isMinimized }">
+    <div class="gpt-content" :class="{ 'hidden': isMinimized }">
       <!-- 标签页nav -->
       <div class="tab-nav">
         <button class="tab-btn" id="task-btn" @click="switchTab('task')">任务</button>

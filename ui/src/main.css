@@ -24,7 +24,7 @@ body {
 }
 
 /*pa内容*/
-#chaoxing-gpt-app .container {
+.container {
     /* width: 680px; */
     /* height: 900px; */
     width: 430px;
@@ -78,7 +78,7 @@ body {
     transform: rotate(180deg);
 }
 
-.container .content {
+.gpt-content {
     flex-grow: 1;
     max-width: 500px;
     min-height: 0;
@@ -88,7 +88,7 @@ body {
     background-color: #107bf5a8;
 }
 
-.content.hidden {
+.gpt-content.hidden {
     height: 0;
     padding: 0 20px;
     opacity: 0;

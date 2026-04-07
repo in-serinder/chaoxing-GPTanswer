@@ -1,0 +1,14 @@
+        #chaoxing-gpt-app {
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            width: 450px !important;
+            height: 600px !important;
+            z-index: 9999 !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+            background: #ffffff !important;
+            border: 1px solid #e8e8e8 !important;
+            transition: all 0.3s ease !important;
+        }

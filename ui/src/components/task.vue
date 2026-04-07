@@ -26,6 +26,11 @@
 <script setup lang="ts">
 import '@/style/task.css'
 import { ref, computed } from 'vue'
+import { useQuestionsStore } from '@/stores/questions'
+import { usePagesStore } from '@/stores/pages'
+
+const questionsStore = useQuestionsStore()
+const pagesStore = usePagesStore()
 
 const isTaskRunning = ref(false)
 const currentTask = ref('')
@@ -60,6 +65,11 @@ const runSubTask = (taskName: string) => {
 
     currentTask.value = taskName
     taskStatus.value[taskName as keyof typeof taskStatus.value] = '进行中'
+
+    if (taskName === '获取题目列表') {
+        questionsStore.fetchQuestions()
+        console.info(questionsStore.combineQuestions())
+    }
 
     // 模拟子任务执行
     setTimeout(() => {

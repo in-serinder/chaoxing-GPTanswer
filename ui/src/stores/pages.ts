@@ -7,6 +7,7 @@ export const usePagesStore = defineStore("pages", {
     };
   },
   actions: {
+    /*注册类函数 */
     checkISQuestionPage() {
       this.isQuestionPage = document.getElementById("RightCon") !== null;
     },

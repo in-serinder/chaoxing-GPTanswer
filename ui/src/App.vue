@@ -3,7 +3,7 @@
   <div class="container" :class="{ 'minimized': isMinimized }" :style="containerStyle">
     <div class="title" @mousedown="startDrag" @mouseup="stopDrag" @mousemove="onDrag">
       <!-- <img src="https://pic1.imgdb.cn/item/69d24da0441d16110110747f.png" alt="titleIcon" class="title-icon"> -->
-      <h2>学习通GPT答题 ({{ isQuestionPage ? '已处于答题页面' : '请进入任务页面' }})</h2>
+      <h2>学习通GPT答题 ({{ pagesStore.isQuestionPage ? '已处于答题页面' : '请进入任务页面' }})</h2>
       <img :src="zoom" alt="zoom" class="zoom-icon" :class="{ 'rotated': isMinimized }" @click="toggleMinimize">
     </div>
     <div class="gpt-content" :class="{ 'hidden': isMinimized }">
@@ -50,7 +50,7 @@ import { usePagesStore } from '@/stores/pages'
 const questionsStore = useQuestionsStore()
 const pagesStore = usePagesStore()
 
-const isQuestionPage = ref(false)
+// const isQuestionPage = ref(false)
 const isMinimized = ref(false)
 const isDragging = ref(false)
 const startX = ref(0)
